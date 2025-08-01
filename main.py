@@ -71,21 +71,6 @@ class ImageSecret:
             raise ValueError("Delimiter not found. Image may not contain a message.")
         return message[:end_index]
 
-    def run_test(self):
-        image_path = "tests/test_image_1.jpg"
-        secret_message = "This is a secret test message."
-        print(f'Encoding message into {image_path}\nSecret Message: "{secret_message}"')
-        self.encode_image(image_path, secret_message)
-        print("Encode is complete")
-
-        print("\nStarting Decode")
-        secret = self.decode_image("output/image.png")
-        if secret_message == secret:
-            print("Encode and Decode was successful")
-        else:
-            print("Encode and Decode failed.")
-            print(secret)
-
     def run(self):
         print("\nSecret Message Encode/Decode")
 
