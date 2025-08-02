@@ -12,8 +12,26 @@ pip install -r requirements.txt
 
 ## Usage
 
+## Run using a terminal interface
+
 Run Python script
 
 ```bash
 python main.py
+```
+
+### CLI
+
+```bash
+usage: secret_image_cli.py [-h] {encode,decode} ...
+
+Encode or decode messages in PNG images.
+
+positional arguments:
+  {encode,decode}
+    encode         Encode a message into an image.
+    decode         Decode a message from an image.
+
+options:
+  -h, --help       show this help message and exit
 ```
