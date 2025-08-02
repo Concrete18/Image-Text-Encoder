@@ -14,4 +14,4 @@ venv.bak/
 # custom
 .pytest_cache
 .vscode
-image.png
+test_image.png

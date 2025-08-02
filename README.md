@@ -13,5 +13,5 @@ pip install -r requirements.txt
 Run Python script
 
 ```bash
-py main.py
+python main.py
 ```

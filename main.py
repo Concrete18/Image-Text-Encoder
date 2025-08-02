@@ -4,10 +4,13 @@ from typing import cast
 # third-party imports
 from PIL import Image
 
+# local imports
 from utils.utils import *
 
 
 class ImageSecret:
+    def __init__(self) -> None:
+        pass
 
     @staticmethod
     def encode_image(image_path, secret_message, output_path="output/image.png"):
