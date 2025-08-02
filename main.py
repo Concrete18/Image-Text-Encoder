@@ -81,13 +81,22 @@ class ImageSecret:
         """
         print("\nWhat image do you want to encode a secret into?")
         starter_image_path = open_file_dialog()
+        if not starter_image_path:
+            input("No image was picked\nExiting")
+            sys.exit()
         print(f"Selected: {starter_image_path}")
 
         print("\nWhere do you want to save the image?")
         image_output_path = save_file_as()
+        if not image_output_path:
+            input("No output image was selected\nExiting")
+            sys.exit()
         print(f"Save location: {starter_image_path}")
 
         secret = input("\nWhat message do you want to encode into the image?\n")
+        if not secret:
+            input("No secret was entered\nExiting")
+            sys.exit()
         self.encode_image(starter_image_path, secret, image_output_path)
         print("Encoding was completed.")
 
@@ -96,6 +105,9 @@ class ImageSecret:
         ph
         """
         image_path = open_file_dialog()
+        if not image_path:
+            input("No image was picked\nExiting")
+            sys.exit()
         print(f"\nDecoding: {image_path}\n")
 
         secret = self.decode_image(image_path)
