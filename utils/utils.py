@@ -14,7 +14,7 @@ def open_file_dialog() -> str:
             title="Select a file",
             initialdir="/",
             filetypes=(
-                ("Images", "*.png"),
+                ("Image files", "*.jpg *.jpeg *.png *.bmp"),
                 ("All files", "*.*"),
             ),
         )
