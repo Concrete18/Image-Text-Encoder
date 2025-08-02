@@ -1,5 +1,6 @@
 # standard library
 from typing import cast
+import sys
 
 # third-party imports
 from PIL import Image
@@ -74,28 +75,52 @@ class ImageSecret:
             raise ValueError("Delimiter not found. Image may not contain a message.")
         return message[:end_index]
 
+    def encode_prompt(self):
+        """
+        ph
+        """
+        print("\nWhat image do you want to encode a secret into?")
+        starter_image_path = open_file_dialog()
+        print(f"Selected: {starter_image_path}")
+
+        print("\nWhere do you want to save the image?")
+        image_output_path = save_file_as()
+        print(f"Save location: {starter_image_path}")
+
+        secret = input("\nWhat message do you want to encode into the image?\n")
+        self.encode_image(starter_image_path, secret, image_output_path)
+        print("Encoding was completed.")
+
+    def decode_prompt(self):
+        """
+        ph
+        """
+        image_path = open_file_dialog()
+        print(f"\nDecoding: {image_path}\n")
+
+        secret = self.decode_image(image_path)
+        print(f"Decoded Secret: {secret}")
+
     def run(self):
-        print("\nSecret Message Encode/Decode")
+        print("\nSecret Message Encoder/Decoder")
 
-        response = input("What do you want to do?\n1.Encode\n2.Decode\n")
+        try:
+            response = input("\nWhat do you want to do?\n1.Encode\n2.Decode\n")
 
-        # -------- Encoding --------
-        if response == "1":
-            print("What image do you want to encode a secret into?")
-            starter_image_path = open_file_dialog()
+            # -------- Encoding --------
+            if response == "1":
+                self.encode_prompt()
 
-            print("Where do you want to save the image?")
-            image_output_path = save_file_as()
+            # -------- Decoding --------
+            elif response == "2":
+                self.decode_prompt()
 
-            secret = input("\nWhat message do you want to encode into the image?\n")
-            self.encode_image(starter_image_path, secret, image_output_path)
-            print("Encoding was completed.")
+            print("Press enter to restart")
+            self.run()
 
-        # -------- Decoding --------
-        elif response == "2":
-            image_path = open_file_dialog()
-            secret = self.decode_image(image_path)
-            print(f"Decoded Secret: {secret}")
+        except KeyboardInterrupt:
+            input("Process Cancelled\n Press Enter to Exit")
+            sys.exit()
 
 
 if __name__ == "__main__":
