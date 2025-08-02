@@ -127,7 +127,7 @@ class ImageSecret:
             elif response == "2":
                 self.decode_prompt()
 
-            print("Press enter to restart")
+            print("\nPress enter to restart")
             self.run()
 
         except KeyboardInterrupt:
